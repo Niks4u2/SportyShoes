@@ -87,7 +87,7 @@
         <div class="container">
             <div class="row align-items-center justify-content-center">
                 <div class="col-md-4">
-                    <a href="#" class="btn btn-warning p-3 fw-bold">Add Product</a>
+                    <a th:href="@{/product}" class="btn btn-warning p-3 fw-bold">Add Product</a>
                 </div>
                 <div class="col-md-4">
                     <a href="#" class="btn btn-warning p-3 fw-bold">Purchase Report</a>
@@ -103,13 +103,28 @@
     <section class="p-5 bg-light text-dark">
         <div class="container">
             <div class="row align-items-center justify-content-center">
+            	<!-- delete success message -->
+				<div th:if="${param.success}">
+					<div class="alert alert-danger">Product deleted successfully!</div>
+				</div>
                 <table style="width: 100%; text-align: center;">
                     <tr>
                         <th>Id</th>
                         <th>Name</th>
-                        <th>Category</th>
+                        <th>Brand</th>
                         <th>Price</th>
+                        <th>Description</th>
+                        <th>Category</th>
                         <th>Action</th>
+                    </tr>
+                    <tr th:each="prod : ${prods}">
+                        <td th:text="${prod.id}"></td>
+                        <td th:text="${prod.productName}"></td>
+                        <td th:text="${prod.brand}"></td>
+                        <td th:text="${prod.price}"></td>
+                        <td th:text="${prod.description}"></td>
+                        <td th:text="${prod.category}"></td>
+                        <td><a th:href="@{/product/{prodId}(prodId=${prod.id})}" class="btn btn-primary">Edit</a> <a th:href="@{/product/delete/{prodId}(prodId=${prod.id})}" class="btn btn-danger">Delete</a></td>
                     </tr>
                 </table>
             </div>

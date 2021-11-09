@@ -1,0 +1,5 @@
+package com.nikhil.sportyshoes.model;
+
+public class Product {
+
+}

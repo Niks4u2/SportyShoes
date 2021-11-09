@@ -53,6 +53,9 @@
                     <li class="nav-item">
                         <a th:href="@{/cart}" class="nav-link lead px-3"><i class="fas fa-shopping-cart"></i>Cart</a>
                     </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    	<span th:text=${cartCount} class="nav-link lead px-3">0</span >
+                    </li>
                     <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
 						<a th:href="@{/admindashboard}" class="nav-link lead px-3"><i class="fas fa-chart-line"></i>Admin Dashboard</a >
                    </li>
@@ -188,6 +191,18 @@
                             <p class="card-text">Comprising of stylish mesh upper and rubber sole this is lightweight.</p>
                             <p class="fw-bold lead">&#x20B9; 1199</p><button type="button" class="btn btn-warning">Add to Cart</button>
                         </div>
+                    </div>
+                </div>
+                <!--- Card Dynamic -->
+                <div class="col-md-6 col-lg-3" th:each="prod : ${prodlist}">
+                    <div class="card bg-light" style="height: 28rem;">
+                        <div class="card-body text-center">
+                            <img th:src="@{/shoes-images/sparx.jpg}" class="mb-2 img-thumbnail img-fluid img-responsive"
+                                alt="product1-pic" style="height: 10rem;">
+                            <h3 class="card-title mb-2" th:text="${prod.productName}">Sparx Men's Running Shoes</h3>
+                            <p class="card-text" th:text="${prod.description}">Flaunt with these stylish and unique sports shoes as per the latest
+                                fashion.</p>
+                                <p class="fw-bold lead" th:text="${prod.price}">&#x20B9; 999</p><a th:href="@{/cart/{prodId}(prodId=${prod.id})}" class="btn btn-warning">Add to Cart</a>                     </div>
                     </div>
                 </div>
             </div>

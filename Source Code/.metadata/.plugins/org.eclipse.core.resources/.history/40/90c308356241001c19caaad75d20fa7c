@@ -1,0 +1,19 @@
+package com.nikhil.sportyshoes.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nikhil.sportyshoes.model.Cart;
+import com.nikhil.sportyshoes.repository.CartRepository;
+
+@Service
+public class CartService {
+	
+	@Autowired
+	private CartRepository repository;
+	
+	private void addToCart(Cart cart)
+	{
+		repository.save(cart);
+	}
+}

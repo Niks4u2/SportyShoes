@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
         <div class="container">
-            <a href="#" class="navbar-brand text-warning fw-bold fs-2 animate__animated animate__bounce">Sporty Shoes</a>
+            <a href="/" class="navbar-brand text-warning fw-bold fs-2 animate__animated animate__bounce">Sporty Shoes</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -31,6 +31,9 @@
                     <li class="nav-item">
                         <a th:href="@{/cart}" class="nav-link lead px-3"><i class="fas fa-shopping-cart"></i>Cart</a>
                     </li>
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                    	<span th:text=${cartCount} class="nav-link lead px-3">0</span >
+                    </li>
                 </ul>
             </div>
         </div>
@@ -39,3 +42,35 @@
     <br>
     <br>
     <br>
+    
+    <!-- Cart Items -->
+    <section class="p-5 bg-light text-dark">
+        <div class="container">
+            <div class="row align-items-center justify-content-center">
+				<div>
+					<p class="fw-bold lead">Total Amount : <span th:text="${total}"></span ></p >
+				</div>
+                <table style="width: 100%; text-align: center;">
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Description</th>
+                        <th>Category</th>
+                        <th>Action</th>
+                    </tr>
+                    <tr th:each="prod,status : ${cart}">
+                        <td th:text="${prod.id}"></td>
+                        <td th:text="${prod.productName}"></td>
+                        <td th:text="${prod.brand}"></td>
+                        <td th:text="${prod.price}"></td>
+                        <td th:text="${prod.description}"></td>
+                        <td th:text="${prod.category}"></td>
+                        <td><a th:href="@{/cart/delete/{prodId}(prodId=${status.index})}" class="btn btn-danger">Delete</a></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+</body>

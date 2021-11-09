@@ -1,0 +1,32 @@
+package com.nikhil.sportyshoes.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.nikhil.sportyshoes.model.Cart;
+import com.nikhil.sportyshoes.service.CartService;
+
+@Controller
+@RequestMapping("/cart")
+public class CartController {
+	
+	@Autowired
+	private CartService service;
+	
+	@GetMapping
+	public String getCartPage()
+	{
+		return "cart";
+	}
+	
+	@PostMapping
+	public String addToCart(@ModelAttribute("cart") Cart cart)
+	{
+		service.addToCart(cart);
+		return "cart";
+	}
+}

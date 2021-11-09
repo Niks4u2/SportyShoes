@@ -1,0 +1,5 @@
+package com.nikhil.sportyshoes.repository;
+
+public interface CartRepository {
+
+}
