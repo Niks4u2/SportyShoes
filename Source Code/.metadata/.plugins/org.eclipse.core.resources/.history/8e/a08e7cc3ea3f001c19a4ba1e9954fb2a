@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<meta charset="ISO-8859-1">
+<title>Registration and Login App</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+	integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+	crossorigin="anonymous">
+
+</head>
+<body>
+	<!-- create navigation bar ( header) -->
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark fixed-top">
+        <div class="container">
+            <a href="#" class="navbar-brand text-warning fw-bold fs-2 animate__animated animate__bounce">N.J</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navmenu">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="#about" class="nav-link lead px-3">Sign Up</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#work" class="nav-link lead px-3">Admin</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#contact" class="nav-link lead px-3">Cart</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+	<br>
+	<br>
+
+	<div class="container">
+		<h1>Registration and Login with Spring Boot, Spring Security,
+			Thymeleaf, Hibernate and MySQL</h1>
+		Welcome <span sec:authentication="principal.username"> User</span>
+	</div>
+</body>
+</html>

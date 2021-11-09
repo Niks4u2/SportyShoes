@@ -1,0 +1,5 @@
+package com.nikhil.sportyshoes.config;
+
+public class SecurityConfiguration {
+
+}

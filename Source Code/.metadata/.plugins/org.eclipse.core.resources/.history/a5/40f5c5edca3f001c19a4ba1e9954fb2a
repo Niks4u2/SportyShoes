@@ -1,0 +1,5 @@
+package com.nikhil.sportyshoes.controller;
+
+public class AdminRegistrationController {
+
+}

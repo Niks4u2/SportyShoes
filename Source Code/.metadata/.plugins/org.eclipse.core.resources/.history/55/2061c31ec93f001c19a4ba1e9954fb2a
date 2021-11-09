@@ -1,0 +1,20 @@
+package com.nikhil.sportyshoes.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nikhil.sportyshoes.model.User;
+import com.nikhil.sportyshoes.repository.UserRepository;
+
+@Service
+public class UserService {
+	
+	@Autowired
+	private UserRepository repository;
+	
+	public void registerUser(User user)
+	{
+		user.setRoles("USER");
+		repository.save(user);
+	}
+}
