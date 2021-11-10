@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.nikhil.sportyshoes.model.Cart;
 import com.nikhil.sportyshoes.model.Product;
@@ -40,5 +41,22 @@ public class HomeController {
 		return "admindashboard";
 	}
 	
+	@GetMapping("/checkout")
+	public String checkout(Model model)
+	{
+		model.addAttribute("total", Cart.cart.stream().mapToDouble(Product::getPrice).sum());
+		return "checkout";
+	}
 	
+	@GetMapping("/report")
+	public String report()
+	{
+		return "report";
+	}
+	
+	@PostMapping("/report")
+	public String reportP()
+	{
+		return "report";
+	}
 }

@@ -32,7 +32,9 @@ public class CartController {
 	{
 		Cart.cart.add(service.getProductById(prodId));
 		model.addAttribute("cart", Cart.cart);
-		return "cart";
+		model.addAttribute("total", Cart.cart.stream().mapToDouble(Product::getPrice).sum());
+		model.addAttribute("cartCount", Cart.cart.size());
+		return "redirect:/cart";
 	}
 	
 	@GetMapping("/delete/{index}")
@@ -42,4 +44,5 @@ public class CartController {
 		model.addAttribute("cart", Cart.cart);
 		return "redirect:/cart";
 	}
+	
 }

@@ -47,9 +47,10 @@
     <section class="p-5 bg-light text-dark">
         <div class="container">
             <div class="row align-items-center justify-content-center">
-				<div>
+				<div class="col">
 					<p class="fw-bold lead">Total Amount : <span th:text="${total}"></span ></p >
-				</div>
+					<a th:href="@{/checkout}" class="btn btn-warning mb-3">Checkout</a>
+				</div >
                 <table style="width: 100%; text-align: center;">
                     <tr>
                         <th>Id</th>

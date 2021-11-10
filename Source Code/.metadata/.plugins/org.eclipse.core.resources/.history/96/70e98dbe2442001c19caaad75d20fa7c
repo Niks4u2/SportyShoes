@@ -1,0 +1,12 @@
+package com.nikhil.sportyshoes.model;
+
+public class PaytmDetails {
+		
+	private String merchantId;
+	private String merchantKey;
+	private String channelId;
+	private String website;
+	private String IndustryTypeId;
+	private String paytmUrl;
+	private Map<String, String> details;
+}

@@ -46,6 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests()
 			.antMatchers("/admindashboard**").hasAuthority("ADMIN")
 			.antMatchers("/product**").hasAuthority("ADMIN")
+			.antMatchers("/pgresponse**").permitAll()
 			.antMatchers("/").permitAll()
 			.and()
 			.formLogin()
@@ -58,5 +59,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
 			.logoutSuccessUrl("/login?logout")
 			.permitAll();
+		
+		http.cors().and().csrf().disable();
 	}	
 }
