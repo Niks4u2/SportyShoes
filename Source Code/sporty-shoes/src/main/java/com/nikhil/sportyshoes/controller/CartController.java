@@ -44,5 +44,4 @@ public class CartController {
 		model.addAttribute("cart", Cart.cart);
 		return "redirect:/cart";
 	}
-	
 }

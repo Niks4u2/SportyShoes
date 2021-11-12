@@ -45,8 +45,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
 			.antMatchers("/admindashboard**").hasAuthority("ADMIN")
-			.antMatchers("/product**").hasAuthority("ADMIN")
-			.antMatchers("/pgresponse**").permitAll()
+			.antMatchers("/product**", "/registeredusers**").hasAuthority("ADMIN")
+			.antMatchers("/checkout").hasAnyAuthority("ADMIN","USER")
 			.antMatchers("/").permitAll()
 			.and()
 			.formLogin()
@@ -61,5 +61,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 			.permitAll();
 		
 		http.cors().and().csrf().disable();
-	}	
+	}
+	
 }

@@ -1,6 +1,7 @@
 package com.nikhil.sportyshoes.controller;
 
 import java.util.Map;
+import java.util.Random;
 import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -26,9 +27,10 @@ public class PaymentController {
 	@GetMapping(value = "/pgredirect")
 	public ModelAndView getRedirect() throws Exception {
 		
+		Random random = new Random();
 		String customerId = "74674648";
 		String transactionAmount = String.valueOf(Cart.cart.stream().mapToDouble(Product::getPrice).sum());
-		String orderId = "768354694";
+		String orderId = "ORDERID"+String.valueOf(random.nextLong());
 		
 		ModelAndView modelAndView = new ModelAndView("redirect:" + paytmDetails.getPaytmUrl());
 		TreeMap<String, String> parameters = new TreeMap<>();

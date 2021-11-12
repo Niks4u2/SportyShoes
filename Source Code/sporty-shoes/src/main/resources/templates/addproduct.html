@@ -25,9 +25,9 @@
                     <li class="nav-item">
                         <a th:href="@{/registration}" class="nav-link lead px-3"><i class="fas fa-user-plus"></i>Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a th:href="@{/adminregistration}" class="nav-link lead px-3"><i class="fas fa-user-cog"></i>Admin</a>
-                    </li>
+                    <li class="nav-item" sec:authorize="hasAuthority('ADMIN')">
+						<a th:href="@{/admindashboard}" class="nav-link lead px-3"><i class="fas fa-chart-line"></i>Admin Dashboard</a >
+                   </li>
                     <li class="nav-item">
                         <a th:href="@{/cart}" class="nav-link lead px-3"><i class="fas fa-shopping-cart"></i>Cart</a>
                     </li>
@@ -39,7 +39,7 @@
     <br>
     <br>
     <br>
-	<!-- Create HTML registration form -->
+	<!-- Add product form -->
 	<div class="container">
 		<div class="row">
 			    <div class="col"></div>

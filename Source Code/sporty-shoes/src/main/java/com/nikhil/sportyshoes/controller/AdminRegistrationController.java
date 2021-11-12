@@ -15,7 +15,6 @@ import com.nikhil.sportyshoes.service.UserService;
 @RequestMapping("/adminregistration")
 public class AdminRegistrationController {
 	
-	
 	@Autowired
 	private UserService service;
 	

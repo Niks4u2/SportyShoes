@@ -1,5 +1,6 @@
 package com.nikhil.sportyshoes.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +28,10 @@ public class UserService {
 	public Optional<User> findUserByEmail(String email)
 	{
 		return repository.findByEmail(email);
+	}
+	
+	public List<User> getAllRegisteredUser()
+	{
+		return repository.findAll();
 	}
 }

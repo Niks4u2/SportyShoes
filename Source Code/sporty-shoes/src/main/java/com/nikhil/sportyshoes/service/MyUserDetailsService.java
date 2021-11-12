@@ -3,6 +3,7 @@ package com.nikhil.sportyshoes.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -23,12 +24,20 @@ public class MyUserDetailsService implements UserDetailsService
 		Optional<User> user = repository.findByEmail(email);
 		user.orElseThrow(() -> new UsernameNotFoundException("Not found: "+email));
 		UserDetails details = user.map(MyUserDetails::new).get();
-		if(details.getAuthorities().stream()
-      .anyMatch(a -> a.getAuthority().equals("ADMIN")))
-			System.out.println("admin role");
 		return details;
 	}
 	
-	
+	public String getLoggedInUsername()
+	{
+		String username;
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails) {
+		  username = ((UserDetails)principal).getUsername();
+		} else {
+		  username = principal.toString();
+		}
+		return username;
+	}
 
 }
