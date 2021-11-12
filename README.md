@@ -9,7 +9,7 @@
 ## Using the application
 Homepage displays the application name (Sport Shoes) and four options - Login, Register, Admin, Cart.
 
-[//]: <> (<img width="720" alt="flyaway-screenshot-homepage" src="https://raw.githubusercontent.com/Niks4u2/FlyAway/main/Screenshots/LandingPage.PNG">)
+<img width="720" alt="sportyshoes-screenshot-homepage" src="https://raw.githubusercontent.com/Niks4u2/SportyShoes/main/Screenshots/Homepage.PNG">
 
 <b>Sport Shoes</b>  - <br>
 A query is sent to the remote database that is hosted on AWS RDS for MySQL to fetch all the products and displayed to the user's homepage.
